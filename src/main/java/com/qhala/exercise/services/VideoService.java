@@ -17,5 +17,9 @@ public class VideoService {
         return videoRepository.save(video);
     }
 
+    public List<Video> getAll(){
+        return videoRepository.findAll();
+    }
+
 
 }
