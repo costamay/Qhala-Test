@@ -13,6 +13,12 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+//        Test method
+    @RequesMapping("/hello")
+    public String hello(){
+        return  "Hello World";
+    }
+
     @PostMapping("/create")
     public User createUser(@RequestBody User user){
         return userService.createUser(user);
