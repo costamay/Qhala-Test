@@ -3,6 +3,8 @@ package com.qhala.exercise.controllers;
 import com.qhala.exercise.entities.User;
 import com.qhala.exercise.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,4 +18,8 @@ public class UserController {
         return userService.createUser(user);
     }
 
+    @GetMapping("/all")
+    public List<User> getAll(){
+        return userService.getAll();
+    }
 }
