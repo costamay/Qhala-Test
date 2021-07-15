@@ -3,6 +3,8 @@ package com.qhala.exercise.entities;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.Collection;
+
 public class MyUserDetails implements UserDetails {
 
     private String userName;
@@ -12,7 +14,6 @@ public class MyUserDetails implements UserDetails {
         this.userName = user.getUsernameName();
         this.password = user.getPassword();
     }
-
 
 
     @Override
