@@ -3,6 +3,11 @@ package com.qhala.exercise.entities;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 @Entity
 @Data
 @RequiredArgsConstructor
@@ -12,5 +17,6 @@ public class Video {
 
     private Long id;
     private String videoName;
+    private User user;
 
 }
