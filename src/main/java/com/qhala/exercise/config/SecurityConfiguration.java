@@ -1,4 +1,4 @@
-package com.qhala.exercise;
+package com.qhala.exercise.config;
 
 import com.qhala.exercise.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
