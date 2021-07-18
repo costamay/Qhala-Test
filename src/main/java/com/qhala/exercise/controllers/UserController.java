@@ -51,12 +51,12 @@ public class UserController {
         return ResponseEntity.ok(new AuthenticationResponse(jwt));
     }
 
-    @PostMapping("/create")
+    @PostMapping("user/create")
     public User createUser(@RequestBody User user){
         return userService.createUser(user);
     }
 
-    @GetMapping("/all")
+    @GetMapping("user/all")
     public List<User> getAll(){
 
         return userService.getAll();
