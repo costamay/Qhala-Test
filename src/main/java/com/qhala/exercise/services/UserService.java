@@ -2,6 +2,7 @@ package com.qhala.exercise.services;
 
 import com.qhala.exercise.entities.MyUserDetails;
 import com.qhala.exercise.entities.User;
+import com.qhala.exercise.exceptions.ResourceNotFoundException;
 import com.qhala.exercise.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -39,7 +40,7 @@ public class UserService implements UserDetailsService {
     }
 
     public User findUserById(Long id){
-        return userRepository.findById(id).get();
+        return userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("User not found with id : " + id));
     }
 
     public void  deleteUserById(Long id){
