@@ -1,6 +1,7 @@
 package com.qhala.exercise.services;
 
 import com.qhala.exercise.entities.Book;
+import com.qhala.exercise.entities.User;
 import com.qhala.exercise.repositories.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,15 +15,19 @@ public class BookService {
     @Autowired
     BookRepository bookRepository;
 
-    public Book addBook(Book book){
+    public Book addBook(Book book) {
         return bookRepository.save(book);
     }
 
-    public List<Book> getAll(){
+    public List<Book> getAll() {
         return bookRepository.findAll();
     }
 
-    public Optional<Book> findById(long id){
-        return bookRepository.findById(id);
+    public Book findBookById(Long id) {
+        return bookRepository.findById(id).get();
+    }
+
+    public void deleteBookById(Long id) {
+        bookRepository.deleteById(id);
     }
 }

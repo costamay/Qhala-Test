@@ -37,4 +37,12 @@ public class UserService implements UserDetailsService {
         user.orElseThrow(() -> new UsernameNotFoundException("Not found: " + userName));
         return user.map(MyUserDetails::new).get();
     }
+
+    public User findUserById(Long id){
+        return userRepository.findById(id).get();
+    }
+
+    public void  deleteUserById(Long id){
+        userRepository.deleteById(id);
+    }
 }

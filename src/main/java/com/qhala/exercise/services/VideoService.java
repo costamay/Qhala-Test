@@ -1,5 +1,6 @@
 package com.qhala.exercise.services;
 
+import com.qhala.exercise.entities.User;
 import com.qhala.exercise.entities.Video;
 import com.qhala.exercise.repositories.VideoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,9 +23,12 @@ public class VideoService {
         return videoRepository.findAll();
     }
 
-    public Optional<Video> findById(Long id){
+    public Video findVideoById(Long id){
+        return videoRepository.findById(id).get();
+    }
 
-        return videoRepository.findById(id);
+    public void  deleteVideoById(Long id){
+        videoRepository.deleteById(id);
     }
 
 }
