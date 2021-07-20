@@ -6,6 +6,7 @@ import com.qhala.exercise.entities.User;
 import com.qhala.exercise.services.UserService;
 import com.qhala.exercise.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -52,13 +53,26 @@ public class UserController {
     }
 
     @PostMapping("user/create")
-    public User createUser(@RequestBody User user){
-        return userService.createUser(user);
+    public ResponseEntity<?>  createUser(@RequestBody User user){
+        User userSaved = userService.createUser(user);
+        return new ResponseEntity<User>(userSaved, HttpStatus.CREATED);
     }
 
     @GetMapping("user/all")
-    public List<User> getAll(){
+    public ResponseEntity<List<User>> getAll(){
+        List<User> listOfAllUsers = userService.getAll();
+        return new ResponseEntity<List<User>>(listOfAllUsers, HttpStatus.OK);
+    }
 
-        return userService.getAll();
+    @GetMapping("user/find/{id}")
+    public  ResponseEntity<?> findUserById(@PathVariable("id") Long id){
+        User userRetrieved = userService.findUserById(id);
+        return new ResponseEntity<User>(userRetrieved, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/video/delete/{id}")
+    public ResponseEntity<Void> deleteUserById(@PathVariable("id") Long id){
+        userService.deleteUserById(id);
+        return new ResponseEntity<Void>(HttpStatus.ACCEPTED);
     }
 }

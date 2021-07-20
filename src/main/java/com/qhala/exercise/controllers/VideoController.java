@@ -1,12 +1,12 @@
 package com.qhala.exercise.controllers;
 
+import com.qhala.exercise.entities.User;
 import com.qhala.exercise.entities.Video;
 import com.qhala.exercise.services.VideoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -16,13 +16,28 @@ public class VideoController {
     VideoService videoService;
 
     @PostMapping("video/create")
-    public Video addVideo(@RequestBody Video video){
-        return videoService.addVideo(video);
+    public ResponseEntity<?> addVideo(@RequestBody Video video){
+        Video videoSaved = videoService.addVideo(video);
+        return new ResponseEntity<Video>(videoSaved,HttpStatus.CREATED);
     }
 
     @GetMapping("/video/all")
-    public List<Video> getAll(){
-        return videoService.getAll();
+    public ResponseEntity<List<Video>> getAll(){
+        List<Video> listOfVideos = videoService.getAll();
+        return new ResponseEntity<List<Video>>(listOfVideos, HttpStatus.OK);
     }
+
+    @GetMapping("video/find/{id}")
+    public  ResponseEntity<?> findVideoById(@PathVariable("id") Long id){
+        Video videoRetrieved = videoService.findVideoById(id);
+        return new ResponseEntity<Video>(videoRetrieved, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/video/delete/{id}")
+    public ResponseEntity<Void> deleteUserById(@PathVariable("id") Long id){
+        videoService.deleteVideoById(id);
+        return new ResponseEntity<Void>(HttpStatus.ACCEPTED);
+    }
+
 
 }
