@@ -1,6 +1,7 @@
 package com.qhala.exercise;
 
 import com.qhala.exercise.entities.User;
+import com.qhala.exercise.entities.Video;
 import com.qhala.exercise.repositories.BookRepository;
 import com.qhala.exercise.services.BookService;
 import com.qhala.exercise.services.UserService;
@@ -54,6 +55,12 @@ class ExerciseApplicationTests {
 		user.setId(4L);
 		userService.createUser(user);
 		userService.deleteUserById(4L);
+	}
+
+	@Test
+	public void testAddVideo(){
+		Video video = new Video("Act of Velor", "1L");
+		videoService.addVideo(video);
 	}
 
 }

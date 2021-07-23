@@ -1,5 +1,6 @@
 package com.qhala.exercise.entities;
 
+import lombok.Builder;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
@@ -11,6 +12,7 @@ import javax.persistence.Id;
 @Entity
 @Data
 @RequiredArgsConstructor
+@Builder
 public class User {
 
     @Id
