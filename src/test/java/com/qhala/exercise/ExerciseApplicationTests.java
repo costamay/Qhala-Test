@@ -35,22 +35,25 @@ class ExerciseApplicationTests {
 
 	@Test
 	public void testGetAllUsers(){
-		User user = new User("Qhala", "1234");
+		User user = new User("Angi", "1234");
 		userService.createUser(user);
 		userService.getAll();
 	}
 
 	@Test
 	public void testFindUserById(Long id){
-		User user = new User("Qhala", "1234");
+		User user = new User("Titus", "1234");
+		user.setId(3L);
 		userService.createUser(user);
-		userService.findUserById(1L);
+		userService.findUserById(3L);
 	}
+
 	@Test
 	public void testDeleteUserById(Long id){
-		User user = new User("Qhala", "1234");
+		User user = new User("Mary", "1234");
+		user.setId(4L);
 		userService.createUser(user);
-		userService.deleteUserById(1L);
+		userService.deleteUserById(4L);
 	}
 
 }
