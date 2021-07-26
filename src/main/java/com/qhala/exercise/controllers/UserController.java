@@ -5,6 +5,8 @@ import com.qhala.exercise.entities.AuthenticationResponse;
 import com.qhala.exercise.entities.User;
 import com.qhala.exercise.services.UserService;
 import com.qhala.exercise.util.JwtUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +20,7 @@ import java.util.List;
 
 @RestController
 public class UserController {
+    public static  final Logger logger = LoggerFactory.getLogger(UserController.class);
     @Autowired
     private UserService userService;
 
@@ -42,6 +45,7 @@ public class UserController {
             );
 
         } catch (BadCredentialsException e) {
+            logger.error("Incorrect username or password", e);
             throw new Exception("Incorrect username or password", e);
         }
 

@@ -4,6 +4,7 @@ import com.qhala.exercise.entities.Book;
 import com.qhala.exercise.entities.User;
 import com.qhala.exercise.exceptions.ResourceNotFoundException;
 import com.qhala.exercise.repositories.BookRepository;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +13,6 @@ import java.util.Optional;
 
 @Service
 public class BookService {
-
     @Autowired
     BookRepository bookRepository;
 
